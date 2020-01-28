@@ -55,7 +55,9 @@ def front_back(a, b):
     # To take advantage of that, I have made the numerator negative 
     # (-5/2) -> -2.5 gets rounded down to -3, then -(-3) = 3, rounding up
     # discovered this trick on a stack overflow post about rounding up when dividing
-    return(a[:-(-len(a) // 2)]+b[:-(-len(b) // 2)]+a[-(-len(a) // 2):]+b[-(-len(b) // 2):])
+    mid_a = -(-len(a) // 2)
+    mid_b = -(-len(b) // 2)
+    return(a[:mid_a]+b[:mid_b]+a[mid_a:]+b[mid_b:])
 
 
 # Provided simple test() function used in main() to print
