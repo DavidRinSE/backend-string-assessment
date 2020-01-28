@@ -8,6 +8,8 @@
 
 # Additional basic string exercises
 
+__author__ = "David with help from Detrich"
+
 # D. verbing
 # Given a string, if its length is at least 3,
 # add 'ing' to its end.
@@ -15,11 +17,14 @@
 # add 'ly' instead.
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
-
-
 def verbing(s):
     """Your code goes here.  Edit this docstring."""
-    return
+    if len(s) >= 3:
+        if s[-3:] == "ing":
+            s += "ly"
+        else:
+            s += "ing"
+    return s
 
 
 # E. not_bad
@@ -32,7 +37,9 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
     """Your code goes here.  Edit this docstring."""
-    return
+    if s.find("not") < s.find("bad"):
+        s = s[:s.find("not")] + "good" + s[s.find("bad") + 3:]
+    return s
 
 
 # F. front_back
@@ -44,7 +51,11 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
     """Your code goes here.  Edit this docstring."""
-    return
+    # Using // rounds down, (5/2) -> 2.5 gets rounded to 2 
+    # To take advantage of that, I have made the numerator negative 
+    # (-5/2) -> -2.5 gets rounded down to -3, then -(-3) = 3, rounding up
+    # discovered this trick on a stack overflow post about rounding up when dividing
+    return(a[:-(-len(a) // 2)]+b[:-(-len(b) // 2)]+a[-(-len(a) // 2):]+b[-(-len(b) // 2):])
 
 
 # Provided simple test() function used in main() to print
